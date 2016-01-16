@@ -37,6 +37,7 @@
 				<a href="indexWlasciciele.jsp"><li>Wlasciciele</li></a>
 				<a href="indexMieszkania.jsp"><li>Mieszkania</li></a>
 				<a href="indexBloki.jsp"><li>Bloki</li></a>
+				<a href="indexRemonty.jsp"><li>Remonty</li></a>
 				<a href="#"><li>Kontakt</li></a>
 			</ul>
 		</div>
@@ -141,26 +142,26 @@
 
 
 
-		<div class="jumbotron">
-			<div class="container">
-				<h2>Stay Connected</h2>
-				<p>Receive weekly insights from industry insiders.</p>
+	<div class="jumbotron">
+		<div class="container">
+			<h2>Stay Connected</h2>
+			<p>Receive weekly insights from industry insiders.</p>
 
-				<a href="#">Join</a>
-
-
-			</div>
-
-		</div>
-
-		<div class="footer">
-			<div class="container">
-				<p>© Innovation Cloud Conference</p>
-
-			</div>
+			<a href="#">Join</a>
 
 
 		</div>
+
+	</div>
+
+	<div class="footer">
+		<div class="container">
+			<p>© Innovation Cloud Conference</p>
+
+		</div>
+
+
+	</div>
 </body>
 </html>
 

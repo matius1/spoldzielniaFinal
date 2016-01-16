@@ -48,39 +48,35 @@
 
 
 		<div class="container">
-			<p>
-				<a href="BlokController?action=insert">Dodaj</a>
-			</p>
+
+
+			<%
+				String blokid = request.getParameter("blokid");
+				out.println("blokid: " + blokid);
+				if (blokid != null) {
+					out.println("<h3>Remonty w bloku ID: " + blokid + " </h3>");
+				} else if (blokid == null) {
+					out.println("<h3>Lista Remontow</h3>");
+				}
+			%>
+
+
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Ulica</th>
-						<th>Ulica NR</th>
-						<th>Miejscowosc</th>
-						<th colspan=2>Action</th>
+						<th>Id Bloku</th>
+						<th>Opis</th>
+						<th>Kwota</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${bloki}" var="blok">
+					<c:forEach items="${remonty}" var="remont">
 						<tr>
-							<td><c:out value="${blok.blokid}" /></td>
-							<td><c:out value="${blok.ulica}" /></td>
-							<td><c:out value="${blok.ulica_nr}" /></td>
-							<td><c:out value="${blok.miejscowosc}" /></td>
-
-							<td><input type="button" value="Mapka"
-								onclick="window.open('https://www.google.pl/maps/place/<c:out value="${blok.ulica}"/>+<c:out value="${blok.ulica_nr}"/>+<c:out value="${blok.miejscowosc}"/>')" /></td>
-							<td><a
-								href="MieszkanieController?action=mieszkaniaWBloku&blokid=<c:out value="${blok.blokid}"/>">Mieszkania</a></td>
-							<td><a
-								href="BlokController?action=remontyWBloku&blokid=<c:out value="${blok.blokid}"/>">Remonty</a></td>
-							<td><a
-								href="BlokController?action=edit&blokid=<c:out value="${blok.blokid}"/>">Edytuj</a></td>
-							<td><a
-								href="BlokController?action=delete&blokid=<c:out value="${blok.blokid}"/>">Usun</a></td>
-
-
+							<td><c:out value="${remont.remontid}" /></td>
+							<td><c:out value="${remont.blokid}" /></td>
+							<td><c:out value="${remont.opis}" /></td>
+							<td><c:out value="${remont.kwota}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

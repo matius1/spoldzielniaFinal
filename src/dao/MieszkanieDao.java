@@ -235,7 +235,7 @@ public class MieszkanieDao {
 	            preparedStatement.setInt(1, mieszkanieid);
 	            
 	            ResultSet rs = preparedStatement.executeQuery();
-	            if (rs.next()) {
+	            while (rs.next()) {
 	            	Oplaty oplata = new Oplaty();
 	            	oplata.setOplatyid(rs.getString("id_oplat"));
 	            	oplata.setMieszkanieid(rs.getString("id_mieszkania"));

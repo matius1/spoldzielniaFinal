@@ -16,6 +16,7 @@ public class BlokController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/blok.jsp";
     private static String LIST_BLOK = "/listBlok.jsp";
+    private static String LIST_REMONT = "/listRemont.jsp";
     private BlokDao dao;
 	
 	
@@ -47,7 +48,19 @@ public class BlokController extends HttpServlet {
             forward = LIST_BLOK;
             request.setAttribute("bloki", dao.getAllBlok());
             
-        } else {
+        }else if (action.equalsIgnoreCase("listRemont")){
+            forward = LIST_REMONT;
+            request.setAttribute("remonty", dao.getAllRemonty());
+            
+        }else if (action.equalsIgnoreCase("remontyWBloku")){
+            forward = LIST_REMONT;
+            int blokid = Integer.parseInt(request.getParameter("blokid"));
+            request.setAttribute("remonty", dao.getBlokRemonty(blokid));
+            request.setAttribute("blokid", blokid);
+            
+        }
+        
+        else {
             forward = INSERT_OR_EDIT;
         }
 

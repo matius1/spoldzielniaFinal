@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Blok;
+import model.Remont;
 import util.DbUtil;
 
 public class BlokDao {
@@ -114,6 +115,57 @@ private Connection connection;
         return blok;
     }
 	
+	
+	public List<Remont> getAllRemonty() {
+		List<Remont> remonty = new ArrayList<Remont>();
+		
+        try {
+           
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from remont");
+
+            while (rs.next()) {
+            	Remont remont = new Remont();
+            	remont.setRemontid(rs.getString("id_remont"));
+            	remont.setBlokid(rs.getString("id_bloku"));
+            	remont.setOpis(rs.getString("opis"));
+            	remont.setKwota(rs.getString("kwota"));
+
+            	remonty.add(remont);
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return remonty;
+    }
+	
+	
+	public List<Remont> getBlokRemonty(int blokid) {
+		List<Remont> remonty = new ArrayList<Remont>();
+		
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from remont where id_bloku=?");
+            preparedStatement.setInt(1, blokid);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+            	Remont remont = new Remont();
+            	remont.setRemontid(rs.getString("id_remont"));
+            	remont.setBlokid(rs.getString("id_bloku"));
+            	remont.setOpis(rs.getString("opis"));
+            	remont.setKwota(rs.getString("kwota"));
+
+            	remonty.add(remont);
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return remonty;
+    }
 	
 	
 	
