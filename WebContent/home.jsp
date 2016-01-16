@@ -3,6 +3,7 @@
   <head>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='style.css'/>
+    <title>Spoldzielnia Homepage</title>
   </head>
   <body>
   
@@ -15,6 +16,7 @@
     <div class="nav">
       <div class="container">
         	<ul>
+        	<a href="home.jsp"><li>Home</li></a>
         	<a href="indexPracownicy.jsp"> <li>Pracownicy</li></a>
             <a href="indexWlasciciele.jsp"><li>Wlasciciele</li></a>
             <a href="indexMieszkania.jsp"><li>Mieszkania</li></a>
@@ -46,13 +48,10 @@
     </div>
     
     <div class="footer">
-      <div class="container">
-        <p>© Innovation Cloud Conference </p>
-        
-      </div>
-      
-      
-    </div>
+		<div class="container">
+			<p>Stworzone przez: Mateusz Skocz i Krzysztof Peziol</p>
+		</div>
+	</div>
     
   </body>
 </html>

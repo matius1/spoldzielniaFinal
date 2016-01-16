@@ -8,6 +8,11 @@ body {
 	font-weight: 100;
 }
 
+.button1{
+	text-decoration: line-through;
+	background-color: red;
+}
+
 .container {
 	margin: 0 auto;
 	max-width: 1200px; 

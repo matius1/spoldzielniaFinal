@@ -6,6 +6,7 @@
 
 <html>
 <head>
+<title>Oplaty</title>
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100'
 	rel='stylesheet' type='text/css'>
@@ -19,6 +20,79 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
+	<script type="text/javascript">
+	
+	function Pager(tableName, itemsPerPage) {
+		this.tableName = tableName;
+		this.itemsPerPage = itemsPerPage;
+		this.currentPage = 1;
+		this.pages = 0;
+		this.inited = false;
+		
+		this.showRecords = function(from, to) {
+			var rows = document.getElementById(tableName).rows;
+			// i starts from 1 to skip table header row
+			for (var i = 1; i < rows.length; i++) {
+				if (i < from || i > to)
+				rows[i].style.display = 'none';
+				else
+				rows[i].style.display = '';
+			}
+		}
+		
+		this.showPage = function(pageNumber) {
+		
+			if (! this.inited) {
+				alert("not inited");
+				return;
+			}
+			var oldPageAnchor = document.getElementById('pg'+this.currentPage);
+			oldPageAnchor.className = 'pg-normal';
+			this.currentPage = pageNumber;
+			var newPageAnchor = document.getElementById('pg'+this.currentPage);
+			newPageAnchor.className = 'pg-selected';
+			var from = (pageNumber - 1) * itemsPerPage + 1;
+			var to = from + itemsPerPage - 1;
+			this.showRecords(from, to);
+		}
+		
+		this.prev = function() {
+			if (this.currentPage > 1)
+				this.showPage(this.currentPage - 1);
+		}
+		
+		this.next = function() {
+			if (this.currentPage < this.pages) {
+				this.showPage(this.currentPage + 1);
+			}
+		}
+		
+		this.init = function() {
+			var rows = document.getElementById(tableName).rows;
+			var records = (rows.length - 1);
+			this.pages = Math.ceil(records / itemsPerPage);
+			this.inited = true;
+		
+		}
+		
+		this.showPageNav = function(pagerName, positionId) {
+			if (! this.inited) {
+				alert("not inited");
+				return;
+			}
+			var element = document.getElementById(positionId);
+			var pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-normal"><< Wstecz 		</span> ';
+			for (var page = 1; page <= this.pages; page++)
+			pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName + '.showPage(' + page + ');">' + page + '</span> ';
+			pagerHtml += '<span onclick="'+pagerName+'.next();" class="pg-normal"> 		Dalej >></span>';
+			element.innerHTML = pagerHtml;
+		}
+	
+	}
+	
+	</script>
+	
+
 </head>
 <body>
 
@@ -31,6 +105,7 @@
 	<div class="nav">
 		<div class="container">
 			<ul>
+				<a href="home.jsp"><li>Home</li></a>
 				<a href="indexPracownicy.jsp">
 					<li>Pracownicy</li>
 				</a>
@@ -56,7 +131,7 @@
 			%>
 			</h3>
 
-			<table class="table table-hover">
+			<table id="tablepaging"  class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -68,7 +143,7 @@
 						<th>Woda</th>
 						<th>Gaz</th>
 						<th>Remontowe</th>
-						<th colspan=2>Action</th>
+						<th>Akcje</th>
 
 
 
@@ -89,35 +164,33 @@
 
 
 							<td><a
-								href="MieszkanieController?action=deleteOplata&oplataid=<c:out value="${oplata.oplatyid}"/>&mieszkanieid=<c:out value="${mieszkanieid}"/>">Usun</a></td>
+								href="MieszkanieController?action=deleteOplata&oplataid=<c:out value="${oplata.oplatyid}"/>&mieszkanieid=<c:out value="${mieszkanieid}"/>"><button
+										type="button" class="btn btn-danger btn-sm">Usun</button></a></td>
 
 
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+		<div id="pageNavPosition" style="padding-top: 20px" align="center">
 		</div>
 	</div>
+	
 
+				
+			
+	
+	<script type="text/javascript"><!--
+	var pager = new Pager('tablepaging', 10);
+	pager.init();
+	pager.showPageNav('pager', 'pageNavPosition');
+	pager.showPage(1);
+	</script>
 
-
-
-
-	<div class="jumbotron">
-		<div class="container">
-			<h2>Stay Connected</h2>
-			<p>Receive weekly insights from industry insiders.</p>
-
-			<a href="#">Join</a>
-
-
-		</div>
-
-	</div>
 
 	<div class="footer">
 		<div class="container">
-			<p>© Innovation Cloud Conference</p>
+			<p>Stworzone przez: Mateusz Skocz i Krzysztof Peziol</p>
 
 		</div>
 
