@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>SimpleJspServletDB</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>PracownikController</display-name>
+    <servlet-name>PracownikController</servlet-name>
+    <servlet-class>controller.PracownikController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PracownikController</servlet-name>
+    <url-pattern>/PracownikController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WlascicielController</display-name>
+    <servlet-name>WlascicielController</servlet-name>
+    <servlet-class>controller.WlascicielController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WlascicielController</servlet-name>
+    <url-pattern>/WlascicielController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BlokController</display-name>
+    <servlet-name>BlokController</servlet-name>
+    <servlet-class>controller.BlokController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BlokController</servlet-name>
+    <url-pattern>/BlokController</url-pattern>
+  </servlet-mapping>
+</web-app>
