@@ -7,7 +7,7 @@
 
 <html>
 <head>
-<title>Mieszkania</title>
+<title>Mieszkanie</title>
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100'
 	rel='stylesheet' type='text/css'>
@@ -26,34 +26,19 @@
 </head>
 <body>
 
-	<div class="nav">
-		<div class="container">
-			<ul>
-				<a href="home.jsp"><li>Home</li></a>
-				<a href="indexPracownicy.jsp">
-					<li>Pracownicy</li>
-				</a>
-				<a href="indexWlasciciele.jsp"><li>Wlasciciele</li></a>
-				<a href="indexMieszkania.jsp"><li>Mieszkania</li></a>
-				<a href="indexBloki.jsp"><li>Bloki</li></a>
-				<a href="indexRemonty.jsp"><li>Remonty</li></a>
-				<a href="#"><li>Kontakt</li></a>
-			</ul>
-		</div>
-
-	</div>
+	 <%@ include file="navbar.jsp" %> 
 
 	<div class="main">
 
 
 		<div class="container">
-			<h3>Dodaj Mieszkanie</h3>
+			<h3>Mieszkanie</h3>
 
 
 
-			<form role="form" method="POST" action='MieszkanieController' name="frmAddMieszkanie">
+			<form method="POST" action='MieszkanieController' name="frmAddMieszkanie" class="col-md-8">
 				<div class="form-group">
-					<label>ID:</label> <input type="text" class="form-control" name="mieszkanieid" value="<c:out value="${mieszkanie.mieszkanieid}" />" />
+					<label>ID:</label> <input type="text" readonly="readonly" class="form-control" name="mieszkanieid" value="<c:out value="${mieszkanie.mieszkanieid}" />" />
 				</div>
 				<div class="form-group">
 					<label>ID Bloku:</label> <input type="text" class="form-control" name="idBloku" value="<c:out value="${mieszkanie.idBloku}" />" /> 
@@ -63,6 +48,7 @@
 				</div>
 				<div class="form-group">
 					<label>Pietro:</label> <input type="text" class="form-control" name="pietro" value="<c:out value="${mieszkanie.pietro}" />" />
+				</div>
 				<div class="form-group">
 					<label>Powierzchnia:</label> <input type="text" class="form-control" name="powierzchnia" value="<c:out value="${mieszkanie.powierzchnia}" />" />
 				</div>
@@ -81,15 +67,9 @@
 	</div>
 
 
-
-	<div class="footer">
-		<div class="container">
-			<p>Stworzone przez: Mateusz Skocz i Krzysztof Peziol</p>
-
-		</div>
-
-
-	</div>
+	<%@ include file="footer.jsp" %>
+	
+	
 </body>
 </html>
 

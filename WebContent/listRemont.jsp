@@ -21,78 +21,7 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
 
-	<script type="text/javascript">
-	
-	function Pager(tableName, itemsPerPage) {
-		this.tableName = tableName;
-		this.itemsPerPage = itemsPerPage;
-		this.currentPage = 1;
-		this.pages = 0;
-		this.inited = false;
-		
-		this.showRecords = function(from, to) {
-			var rows = document.getElementById(tableName).rows;
-			// i starts from 1 to skip table header row
-			for (var i = 1; i < rows.length; i++) {
-				if (i < from || i > to)
-				rows[i].style.display = 'none';
-				else
-				rows[i].style.display = '';
-			}
-		}
-		
-		this.showPage = function(pageNumber) {
-		
-			if (! this.inited) {
-				alert("not inited");
-				return;
-			}
-			var oldPageAnchor = document.getElementById('pg'+this.currentPage);
-			oldPageAnchor.className = 'pg-normal';
-			this.currentPage = pageNumber;
-			var newPageAnchor = document.getElementById('pg'+this.currentPage);
-			newPageAnchor.className = 'pg-selected';
-			var from = (pageNumber - 1) * itemsPerPage + 1;
-			var to = from + itemsPerPage - 1;
-			this.showRecords(from, to);
-		}
-		
-		this.prev = function() {
-			if (this.currentPage > 1)
-				this.showPage(this.currentPage - 1);
-		}
-		
-		this.next = function() {
-			if (this.currentPage < this.pages) {
-				this.showPage(this.currentPage + 1);
-			}
-		}
-		
-		this.init = function() {
-			var rows = document.getElementById(tableName).rows;
-			var records = (rows.length - 1);
-			this.pages = Math.ceil(records / itemsPerPage);
-			this.inited = true;
-		
-		}
-		
-		this.showPageNav = function(pagerName, positionId) {
-			if (! this.inited) {
-				alert("not inited");
-				return;
-			}
-			var element = document.getElementById(positionId);
-			var pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-normal"><< Wstecz 		</span> ';
-			for (var page = 1; page <= this.pages; page++)
-			pagerHtml += '<span id="pg' + page + '" class="pg-normal" onclick="' + pagerName + '.showPage(' + page + ');">' + page + '</span> ';
-			pagerHtml += '<span onclick="'+pagerName+'.next();" class="pg-normal"> 		Dalej >></span>';
-			element.innerHTML = pagerHtml;
-		}
-	
-	}
-	
-	</script>
-	
+	<script type="text/javascript" src="Pager.js"></script>
 
 </head>
 <body>
@@ -103,22 +32,7 @@
 		</div>
 	</div>
 
-	<div class="nav">
-		<div class="container">
-			<ul>
-				<a href="home.jsp"><li>Home</li></a>
-				<a href="indexPracownicy.jsp">
-					<li>Pracownicy</li>
-				</a>
-				<a href="indexWlasciciele.jsp"><li>Wlasciciele</li></a>
-				<a href="indexMieszkania.jsp"><li>Mieszkania</li></a>
-				<a href="indexBloki.jsp"><li>Bloki</li></a>
-				<a href="indexRemonty.jsp"><li>Remonty</li></a>
-				<a href="#"><li>Kontakt</li></a>
-			</ul>
-		</div>
-
-	</div>
+	 <%@ include file="navbar.jsp" %> 
 
 	<div class="main">
 
@@ -132,7 +46,7 @@
 				if (blokid != null) {
 					out.println("<h3>Remonty w bloku ID: " + blokid + " </h3>");
 				} else if (blokid == null) {
-					out.println("<h3>Lista Remontow</h3>");
+					out.println("<h3>Remonty</h3>");
 				}
 			%>
 
@@ -172,16 +86,9 @@
 	pager.showPageNav('pager', 'pageNavPosition');
 	pager.showPage(1);
 	</script>
+</div>
 
-
-	<div class="footer">
-		<div class="container">
-			<p>Stworzone przez: Mateusz Skocz i Krzysztof Peziol</p>
-
-		</div>
-
-
-	</div>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>
 

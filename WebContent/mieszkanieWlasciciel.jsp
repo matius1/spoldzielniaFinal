@@ -12,6 +12,9 @@
 <title>Mieszkania</title>
 </head>
 <body>
+
+ <%@ include file="navbar.jsp" %> 
+
     <h3>Przypisanie mieszkania Wlascicielowi</h3>
     <%
     	int wlascicielid = Integer.parseInt(request.getParameter("wlascicielid"));
@@ -25,6 +28,8 @@
 	
            <p><a href="MieszkanieController?action=addMieszkanieWlascicielowi&mieszkanieid=<c:out value="${mieszkanie.mieszkanieid}"/>&wlascicielid=<c:out value="${wlascicielid}"/>">Przypisz kolejne mieszkanie</a></p> 
     </form>
+    
+    <%@ include file="footer.jsp" %>
 </body>
 </html>
 

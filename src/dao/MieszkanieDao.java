@@ -231,7 +231,7 @@ public class MieszkanieDao {
 		List<Oplaty> oplaty = new ArrayList<Oplaty>();
 		
 		 try {
-	            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM oplaty where oplaty.id_mieszkania =?");
+	            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM oplaty where oplaty.id_mieszkania =? ORDER BY rok, miesiac");
 	            preparedStatement.setInt(1, mieszkanieid);
 	            
 	            ResultSet rs = preparedStatement.executeQuery();
