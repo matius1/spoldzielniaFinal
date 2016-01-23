@@ -2,17 +2,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel='stylesheet' href='style_login.css'/>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Login Page</h1>
-        <center>
-            <h2>Signup Details</h2>
-            <form action='LoginController.jsp' method="POST" action='MieszkanieController' name="frmAddMieszkanie">
-	            <br/>Username:<input type="text" size=20 name="username">
-	            <br/>Password:<input type="password" size=20 name="password">
-	            <br/><input type="submit" value="Submit">
-            </form>
-        </center>
-    </body>
+    
+    
+    <div class = "container">
+	<div class="wrapper">
+		<form action='checkLogin.jsp' method="post" name="Login_Form" class="form-signin">       
+		    <h3 class="form-signin-heading">Zaloguj sie!</h3>
+			  
+			  <input type="text" class="form-control" name="username" placeholder="Login" required="" autofocus="" />
+			  <input type="password" class="form-control" name="password" placeholder="Haslo" required=""/>     		  
+			 
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" type="submit" value="Submit">Zaloguj</button>  			
+		</form>			
+	</div>
+</div>
+    
+
 </html>

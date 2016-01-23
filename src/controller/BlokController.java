@@ -57,7 +57,6 @@ public class BlokController extends HttpServlet {
             int blokid = Integer.parseInt(request.getParameter("blokid"));
             request.setAttribute("remonty", dao.getBlokRemonty(blokid));
             request.setAttribute("blokid", blokid);
-            
         }
         
         else {

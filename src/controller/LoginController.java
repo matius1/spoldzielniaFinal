@@ -34,21 +34,33 @@ public class LoginController extends HttpServlet{
     	login.setLogin(request.getParameter("username"));
     	login.setPass(request.getParameter("password"));
     	
-    	boolean confirmed = false;
     	
-    	confirmed = dao.validate(login);
-    	
-    	if(confirmed){
-    		
-    	}else
-    	{
-    		forward = LOGIN;
-    		request.setAttribute("username", login.getLogin());
-    		session
-    	}
-    	
-    	RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);
+		if(login.getLogin().equals("admin") && login.getPass().equals("admin"))
+		{
+			response.sendRedirect("home.jsp");
+			return;
+		}
+		else
+		{
+			response.sendRedirect("login.jsp");
+			return;
+		}
+//    	
+//    	boolean confirmed = false;
+//    	
+//    	confirmed = dao.validate(login);
+//    	
+//    	if(confirmed){
+//    		
+//    	}else
+//    	{
+//    		forward = LOGIN;
+//    		request.setAttribute("username", login.getLogin());
+//    		session
+//    	}
+//    	
+//    	RequestDispatcher view = request.getRequestDispatcher(forward);
+//        view.forward(request, response);
     	
     }
     

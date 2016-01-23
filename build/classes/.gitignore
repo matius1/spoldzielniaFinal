@@ -1,3 +1,5 @@
-/controller/
 /dao/
 /model/
+/controller/
+/util/
+/.DS_Store

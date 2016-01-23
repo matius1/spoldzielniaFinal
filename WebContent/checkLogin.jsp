@@ -1,44 +1,53 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<%@page import="org.apache.jasper.compiler.Node.ForwardAction"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page import ="java.sql.*" %>
+
+
+
+
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100'
+	rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel='stylesheet' href='style.css' />
+<title>Spoldzielnia Homepage</title>
 </head>
 <body>
 
+
+
 	
 <%
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-           out.println("Checking login<br>");
-            if (username == null || password == null) {
- 
-                out.print("Invalid paramters ");
-            }
- 
-           	boolean a = request.getParameter(arg0);
-            // Here you put the check on the username and password
-            if (username.toLowerCase().trim().equals("admin") && password.toLowerCase().trim().equals("admin")) {
-                out.println("Welcome " + username + " <a href=\"home.jsp\">Back to main</a>");
-                
-                session.setAttribute("username", username);
-                
-                response.sendRedirect("home.jsp");
-            }
-            
-          
-           else 
-               {
-                out.println("Invalid username and password");
-           }
- 
+    String userid = request.getParameter("username");    
+    String pwd = request.getParameter("password");
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spoldzielnia",
+            "root", "");
+    Statement st = con.createStatement();
+    ResultSet rs;
+    
+    rs = st.executeQuery("select * from user where login='" + userid + "' and pass='" + pwd + "'");
+    
+    if (rs.next()) {
+        session.setAttribute("userid", userid);
+        //out.println("welcome " + userid);
+        //out.println("<a href='logout.jsp'>Log out</a>");
+        response.sendRedirect("home.jsp");
+    } else {
+    	%>
+    	<center>
+			<br></br>
+			<p>Niepoprawne dane.<p>
+			<br />
+			<a href="login.jsp"><button type="button" class="btn btn-success">Zaloguj sie ponownie</button></a>
+			</center>
+		<br></br>
+    	<%
+        //out.println("Niepoprawne dane <a href='login.jsp'>Sprobuj ponownie</a>");
+    }
+%>
 
- 
-%> 
 
 
 </body>
