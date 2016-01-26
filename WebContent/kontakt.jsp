@@ -22,34 +22,22 @@
 	<%@ include file="navbar.jsp"%>
 
 
-	<%
-		if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
-	%>
-	<%@ include file="notLogged.jsp"%>
-	
-	<%
-		} else {
-	%>
 
 
 	<div class="main">
 		<div class="container">
-		<h3>Witaj:  <%=session.getAttribute("userid")%>, </h3>
-		</br>
-			<h4>za pomoca tej strony bedziesz w stanie w latwiejszy sposob zarzadzac spoldzielnia mieszkaniowa. </h4>
-			<h4>Umozliwia ona zarzadzanie pracownikami, wlascicielami, mieszkaniami, blokami.</h4>
-			<br>
-			
-			<h4>Milej pracy!</h4>
-
+		
+		
+		
+		<div class="clearfix">
+		<img class="img2" src="https://upload.wikimedia.org/wikipedia/commons/7/74/CEO_Sika_AG.jpg" style="width:300px;height:300px;float: right;">
+		<h2>Kontakt</h2>
+		<h3>Dyrektor ds. Kontaktow z wlascicielami i pracownikami</br> </br> ul. Chmieleniec 63, 31-001 Krakow  </br> +48 12-276-73-09</h3></div>
 
 
 		</div>
 	</div>
-	<%
-		}
-	%>
-	
+
 
 	<%@ include file="footer.jsp"%>
 

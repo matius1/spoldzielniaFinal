@@ -7,7 +7,7 @@
             <a href="indexMieszkania.jsp"><li>Mieszkania</li></a>
             <a href="indexBloki.jsp"><li>Bloki</li></a>
             <a href="indexRemonty.jsp"><li>Remonty</li></a>
-            <a href="#"><li>Kontakt</li></a>
+            <a href="kontakt.jsp"><li>Kontakt</li></a>
             <a href="logout.jsp"><li>Wyloguj</li></a>
         	</ul>
       </div>

@@ -84,7 +84,7 @@ public class MieszkanieController extends HttpServlet {
         	forward = MIESZKANIE_WLASCICIEL;
             request.setAttribute("wlascicielid", wlascicielid);  
             
-        } else if (action.equalsIgnoreCase("oplaty")){ // wyswietla 1 oplate
+        } else if (action.equalsIgnoreCase("oplaty")){
         	int mieszkanieid = Integer.parseInt(request.getParameter("mieszkanieid"));
         	forward = LIST_OPLATY;
             request.setAttribute("mieszkanieid", mieszkanieid);  

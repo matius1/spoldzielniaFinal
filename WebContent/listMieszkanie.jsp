@@ -117,8 +117,9 @@
 				%>
 					<a href="MieszkanieController?action=insert"><button type="button" class="btn btn-success btn-sm">Dodaj</button></a>
 				<%
-					} 
-				%>
+					}
+				%> 
+					
 		<div id="pageNavPosition" style="padding-top: 20px" align="center">
 		</div>
 	</div>

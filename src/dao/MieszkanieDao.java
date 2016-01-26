@@ -105,7 +105,7 @@ public class MieszkanieDao {
         List<Mieszkanie> mieszkania = new ArrayList<Mieszkanie>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM `mieszkanie` join blok on blok.id_bloku = mieszkanie.id_bloku");
+            ResultSet rs = statement.executeQuery("SELECT DISTINCT * FROM `mieszkanie` join blok on blok.id_bloku = mieszkanie.id_bloku order by mieszkanie.id_mieszkania");
             while (rs.next()) {
             	Mieszkanie mieszkanie = new Mieszkanie();
             
@@ -135,9 +135,9 @@ public class MieszkanieDao {
 		 
 		 List<Mieszkanie> mieszkania = new ArrayList<Mieszkanie>();
 	        try {
-	        	PreparedStatement preparedStatement = connection.prepareStatement("select * from mieszkanie JOIN blok on "
+	        	PreparedStatement preparedStatement = connection.prepareStatement("select DISTINCT * from mieszkanie JOIN blok on "
 	        			+ "mieszkanie.id_bloku = blok.id_bloku join wlasciciel_mieszkanie on "
-	        			+ "wlasciciel_mieszkanie.mieszkanie_id= mieszkanie.id_mieszkania where wlasciciel_mieszkanie.wlasciciel_id=?");
+	        			+ "wlasciciel_mieszkanie.mieszkanie_id= mieszkanie.id_mieszkania where wlasciciel_mieszkanie.wlasciciel_id=? order by mieszkanie.id_mieszkania");
 	            preparedStatement.setInt(1, wlascicielid);
 	            ResultSet rs = preparedStatement.executeQuery();
 	            while (rs.next()) {
@@ -168,9 +168,9 @@ public class MieszkanieDao {
 		 List<Mieszkanie> mieszkania = new ArrayList<Mieszkanie>();
 		 System.out.println("blok: " + blokid);
 	        try {
-	        	PreparedStatement preparedStatement = connection.prepareStatement("select * from mieszkanie JOIN blok on "
+	        	PreparedStatement preparedStatement = connection.prepareStatement("select DISTINCT * from mieszkanie JOIN blok on "
 	        			+ "mieszkanie.id_bloku = blok.id_bloku left join wlasciciel_mieszkanie on wlasciciel_mieszkanie.mieszkanie_id= mieszkanie.id_mieszkania "
-	        			+ "where mieszkanie.id_bloku = ?");
+	        			+ "where mieszkanie.id_bloku = ? order by mieszkanie.id_mieszkania");
 	            
 	        			
 	            preparedStatement.setInt(1, blokid);
